@@ -1,0 +1,33 @@
+import React from "react";
+import { getAllNotes } from "../utils/local-data";
+import NoteList from "../components/NoteList";
+
+class NotePage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            notes: getAllNotes(),
+        };
+    }
+    render() {
+        const notes = this.state.notes.filter((note) =>
+            note.title.toLowerCase().includes("")
+        );
+
+        return (
+            <section>
+                <div>
+                    <h2 className="page-title">Daftar Catatan</h2>
+                </div>
+                <NoteList notes={notes} />
+            </section>
+        );
+    }
+}
+
+const NotePageWrapper = () => {
+    return <NotePage />;
+};
+
+export default NotePageWrapper;
