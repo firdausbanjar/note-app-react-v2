@@ -11,7 +11,7 @@ const NoteList = ({ notes }) => {
             ))}
         </div>
     ) : (
-        <EmptyItem label="Tidak ada catatan" />
+        <EmptyItem label="Kosong" />
     );
 };
 

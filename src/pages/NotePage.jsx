@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllNotes } from "../utils/local-data";
+import { getActiveNotes, getAllNotes } from "../utils/local-data";
 import NoteList from "../components/NoteList";
 
 class NotePage extends React.Component {
@@ -7,7 +7,7 @@ class NotePage extends React.Component {
         super(props);
 
         this.state = {
-            notes: getAllNotes(),
+            notes: getActiveNotes(),
         };
     }
     render() {
