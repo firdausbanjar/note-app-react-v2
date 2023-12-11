@@ -21,7 +21,7 @@ class ArchivePage extends React.Component {
                 <div>
                     <h2 className="page-title">Daftar Arsip</h2>
                 </div>
-                <NoteList notes={archives} />
+                <NoteList notes={archives} emptyMessage="Tidak ada Arsip" />
             </section>
         );
     }

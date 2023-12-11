@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class NoteInput extends React.Component {
     constructor(props) {
@@ -8,11 +9,36 @@ class NoteInput extends React.Component {
             title: "",
             body: "",
         };
+
+        this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
+        this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
+        this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
+    }
+
+    onSubmitEventHandler(event) {
+        event.preventDefault();
+        this.props.addNote(this.state);
+    }
+
+    onTitleChangeEventHandler(event) {
+        this.setState(() => {
+            return {
+                title: event.target.value,
+            };
+        });
+    }
+
+    onBodyChangeEventHandler(event) {
+        this.setState(() => {
+            return {
+                body: event.target.innerHTML,
+            };
+        });
     }
 
     render() {
         return (
-            <form className="note-input neumorphism-flat" onSubmit={() => {}}>
+            <form className="note-input neumorphism-flat" onSubmit={this.onSubmitEventHandler}>
                 <div className="input-group">
                     <label htmlFor="title">Judul Catatan</label>
                     <input
@@ -21,6 +47,7 @@ class NoteInput extends React.Component {
                         name="title"
                         id="title"
                         value={this.state.title}
+                        onChange={this.onTitleChangeEventHandler}
                     />
                 </div>
                 <div className="input-group  ">
@@ -28,6 +55,7 @@ class NoteInput extends React.Component {
                     <div
                         className="input-body neumorphism-pressed"
                         contentEditable
+                        onInput={this.onBodyChangeEventHandler}
                     ></div>
                 </div>
                 <div className="input-btn">
@@ -42,5 +70,9 @@ class NoteInput extends React.Component {
         );
     }
 }
+
+NoteInput.propTypes = {
+    addNote: PropTypes.func.isRequired,
+};
 
 export default NoteInput;

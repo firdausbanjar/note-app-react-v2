@@ -11,16 +11,16 @@ class NotePage extends React.Component {
         };
     }
     render() {
-        const notes = this.state.notes.filter((note) =>
-            note.title.toLowerCase().includes("")
-        );
+        const notes = this.state.notes.filter((note) => note.title.toLowerCase().includes(""));
+
+        console.log(getAllNotes());
 
         return (
             <section>
                 <div>
                     <h2 className="page-title">Daftar Catatan</h2>
                 </div>
-                <NoteList notes={notes} />
+                <NoteList notes={notes} emptyMessage="Tidak ada Catatan" />
             </section>
         );
     }

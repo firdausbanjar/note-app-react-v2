@@ -6,6 +6,7 @@ import DetailNotePage from "./pages/DetailNotePage";
 import ArchivePage from "./pages/ArchivePage";
 import NoteInput from "./components/NoteInput";
 import AddNotePage from "./pages/AddNotePage";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path="/notes/new" element={<AddNotePage />} />
                     <Route path="/archives" element={<ArchivePage />} />
                     <Route path="/notes/:id" element={<DetailNotePage />} />
+                    <Route path="*" element={<PageNotFound />} />
                 </Routes>
                 <Navigation />
             </main>
