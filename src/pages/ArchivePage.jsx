@@ -56,12 +56,12 @@ class ArchivePage extends React.Component {
 
         return (
             <section>
+                <SearchBar
+                    keyword={this.state.keyword}
+                    onKeywordChange={this.onKeywordChangeHandler}
+                />
                 <div>
                     <h2 className="page-title">Daftar Arsip</h2>
-                    <SearchBar
-                        keyword={this.state.keyword}
-                        onKeywordChange={this.onKeywordChangeHandler}
-                    />
                 </div>
                 <NoteList
                     notes={archives}

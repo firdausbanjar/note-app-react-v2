@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EmptyItem = ({ label }) => {
+const EmptyMessage = ({ label }) => {
     return (
         <div className="no-notes">
             <p>{label}</p>
@@ -9,8 +9,8 @@ const EmptyItem = ({ label }) => {
     );
 };
 
-EmptyItem.propTypes = {
+EmptyMessage.propTypes = {
     label: PropTypes.string.isRequired,
 };
 
-export default EmptyItem;
+export default EmptyMessage;

@@ -11,7 +11,7 @@ const SearchBar = ({ keyword, onKeywordChange }) => {
                 value={keyword}
                 onChange={(event) => onKeywordChange(event.target.value)}
             />
-            <FaSearch size={30} className="icon" />
+            <FaSearch size={30} className="icon search-icon" />
         </div>
     );
 };

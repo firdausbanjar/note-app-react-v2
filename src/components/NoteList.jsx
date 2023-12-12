@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import NoteItem from "./NoteItem";
-import EmptyItem from "./EmptyItem";
+import EmptyMessage from "./EmptyMessage";
 
 const NoteList = ({ notes, onArchive, onUnarchive, onDelete, emptyMessage }) => {
     return notes.length > 0 ? (
@@ -17,7 +17,7 @@ const NoteList = ({ notes, onArchive, onUnarchive, onDelete, emptyMessage }) => 
             ))}
         </div>
     ) : (
-        <EmptyItem label={emptyMessage} />
+        <EmptyMessage label={emptyMessage} />
     );
 };
 

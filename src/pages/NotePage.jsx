@@ -56,12 +56,12 @@ class NotePage extends React.Component {
 
         return (
             <section>
-                <div className="page-header">
+                <SearchBar
+                    keyword={this.state.keyword}
+                    onKeywordChange={this.onKeywordChangeHandler}
+                />
+                <div>
                     <h2 className="page-title">Daftar Catatan</h2>
-                    <SearchBar
-                        keyword={this.state.keyword}
-                        onKeywordChange={this.onKeywordChangeHandler}
-                    />
                 </div>
                 <NoteList
                     notes={notes}

@@ -1,8 +1,8 @@
 import React from "react";
-import EmptyItem from "../components/EmptyItem";
+import EmptyMessage from "../components/EmptyMessage";
 
 const PageNotFound = () => {
-    return <EmptyItem label="(404) Page Not Found" />;
+    return <EmptyMessage label="(404) Page Not Found" />;
 };
 
 export default PageNotFound;

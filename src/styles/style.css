@@ -133,6 +133,23 @@ nav ul {
     color: #ffffff;
 }
 
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 5px 10px;
+}
+
+.search-icon {
+    margin-left: 10px;
+}
+
+.input-search {
+    width: 100%;
+}
+
 .page-title {
     font-size: 2rem;
     color: #ffffff;
