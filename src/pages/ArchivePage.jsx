@@ -1,5 +1,5 @@
 import React from "react";
-import { getArchivedNotes } from "../utils/local-data";
+import { deleteNote, getArchivedNotes, unarchiveNote } from "../utils/local-data";
 import NoteList from "../components/NoteList";
 
 class ArchivePage extends React.Component {
@@ -9,6 +9,29 @@ class ArchivePage extends React.Component {
         this.state = {
             archives: getArchivedNotes(),
         };
+
+        this.onDeleteHandler = this.onDeleteHandler.bind(this);
+        this.onUnarchiveNoteHandler = this.onUnarchiveNoteHandler.bind(this);
+    }
+
+    onDeleteHandler(id) {
+        deleteNote(id);
+
+        this.setState(() => {
+            return {
+                archives: getArchivedNotes(),
+            };
+        });
+    }
+
+    onUnarchiveNoteHandler(id) {
+        unarchiveNote(id);
+
+        this.setState(() => {
+            return {
+                archives: getArchivedNotes(),
+            };
+        });
     }
 
     render() {
@@ -21,7 +44,12 @@ class ArchivePage extends React.Component {
                 <div>
                     <h2 className="page-title">Daftar Arsip</h2>
                 </div>
-                <NoteList notes={archives} emptyMessage="Tidak ada Arsip" />
+                <NoteList
+                    notes={archives}
+                    onUnarchive={this.onUnarchiveNoteHandler}
+                    onDelete={this.onDeleteHandler}
+                    emptyMessage="Tidak ada Arsip"
+                />
             </section>
         );
     }

@@ -13,11 +13,21 @@ class NoteInput extends React.Component {
         this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
         this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
         this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
+        this.onResetEventHandler = this.onResetEventHandler.bind(this);
     }
 
     onSubmitEventHandler(event) {
         event.preventDefault();
         this.props.addNote(this.state);
+    }
+
+    onResetEventHandler() {
+        this.setState(() => {
+            return {
+                title: "",
+                body: "",
+            };
+        });
     }
 
     onTitleChangeEventHandler(event) {
@@ -59,7 +69,11 @@ class NoteInput extends React.Component {
                     ></div>
                 </div>
                 <div className="input-btn">
-                    <button className="btn cancel-btn" type="reset">
+                    <button
+                        className="btn cancel-btn"
+                        type="reset"
+                        onClick={this.onResetEventHandler}
+                    >
                         Batal
                     </button>
                     <button className="btn submit-btn" type="submit">

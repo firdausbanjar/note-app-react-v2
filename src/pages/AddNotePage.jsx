@@ -13,7 +13,7 @@ const AddNotePage = () => {
 
     return (
         <section>
-            <h2>Tambah Catatan</h2>
+            <h2 className="page-title">Tambah Catatan</h2>
             <NoteInput addNote={onAddNoteHandler} />
         </section>
     );

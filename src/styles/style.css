@@ -220,6 +220,8 @@ nav ul {
     border: none;
     outline: none;
     border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .delete-btn {
@@ -254,6 +256,7 @@ nav ul {
     align-items: center;
     width: 100%;
     padding: 20px;
+    margin-top: 20px;
 }
 
 .input-group {
@@ -290,7 +293,7 @@ nav ul {
 }
 
 .input-body {
-    height: 80%;
+    height: 200px;
 }
 
 .input-body {
@@ -310,12 +313,6 @@ nav ul {
     align-self: flex-end;
     margin-top: auto;
     display: flex;
-}
-
-.delete-btn,
-.archive-btn {
-    font-size: 15px;
-    font-weight: 600;
 }
 
 .submit-btn {
