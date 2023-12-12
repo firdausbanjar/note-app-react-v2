@@ -23,6 +23,7 @@ class NoteInput extends React.Component {
 
     onResetEventHandler() {
         this.setState(() => {
+            document.querySelector(".input-body").innerHTML = "";
             return {
                 title: "",
                 body: "",
@@ -54,8 +55,6 @@ class NoteInput extends React.Component {
                     <input
                         className="input-title neumorphism-pressed "
                         type="text"
-                        name="title"
-                        id="title"
                         value={this.state.title}
                         onChange={this.onTitleChangeEventHandler}
                     />
