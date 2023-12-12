@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 import { useNavigate, useParams } from "react-router-dom";
 import { archiveNote, deleteNote, getNote, unarchiveNote } from "../utils/local-data";
 import { showFormattedDate } from "../utils";
@@ -38,7 +39,10 @@ const DetailNotePage = () => {
                 <div>
                     <h2 className="detail-title">{note.title}</h2>
                     <p className="detail-date">{showFormattedDate(note.createdAt)}</p>
-                    <p className="detail-content">{note.body}</p>
+                    <p
+                        className="detail-content"
+                        dangerouslySetInnerHTML={{ __html: parse(note.body) }}
+                    />
                 </div>
             </div>
         </>
