@@ -24,9 +24,9 @@ const NoteItem = ({ note, onArchive, onUnarchive, onDelete }) => {
 
 NoteItem.propTypes = {
     note: PropTypes.object.isRequired,
-    onDelete: PropTypes.func.isRequired,
     onArchive: PropTypes.func,
     onUnarchive: PropTypes.func,
+    onDelete: PropTypes.func.isRequired,
 };
 
 export default NoteItem;
