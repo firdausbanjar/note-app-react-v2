@@ -1,6 +1,9 @@
 import React from "react";
-import { archiveNote, deleteNote, getActiveNotes, getAllNotes } from "../utils/local-data";
+import { archiveNote, deleteNote, getActiveNotes } from "../utils/local-data";
 import NoteList from "../components/NoteList";
+import { useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import SearchBar from "../components/SearchBar";
 
 class NotePage extends React.Component {
     constructor(props) {
@@ -8,10 +11,12 @@ class NotePage extends React.Component {
 
         this.state = {
             notes: getActiveNotes(),
+            keyword: props.defaultKeyword || "",
         };
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
         this.onArchiveNoteHandler = this.onArchiveNoteHandler.bind(this);
+        this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
     }
 
     onDeleteHandler(id) {
@@ -34,13 +39,29 @@ class NotePage extends React.Component {
         });
     }
 
+    onKeywordChangeHandler(keyword) {
+        this.setState(() => {
+            return {
+                keyword: keyword,
+            };
+        });
+
+        this.props.keywordChange(keyword);
+    }
+
     render() {
-        const notes = this.state.notes.filter((note) => note.title.toLowerCase().includes(""));
+        const notes = this.state.notes.filter((note) =>
+            note.title.toLowerCase().includes(this.state.keyword.toLowerCase())
+        );
 
         return (
             <section>
-                <div>
+                <div className="page-header">
                     <h2 className="page-title">Daftar Catatan</h2>
+                    <SearchBar
+                        keyword={this.state.keyword}
+                        onKeywordChange={this.onKeywordChangeHandler}
+                    />
                 </div>
                 <NoteList
                     notes={notes}
@@ -54,7 +75,19 @@ class NotePage extends React.Component {
 }
 
 const NotePageWrapper = () => {
-    return <NotePage />;
+    const [searchParams, setSearchParams] = useSearchParams();
+    const keyword = searchParams.get("keyword");
+
+    const changeSearchParams = (keyword) => {
+        setSearchParams({ keyword });
+    };
+
+    return <NotePage defaultKeyword={keyword} keywordChange={changeSearchParams} />;
+};
+
+NotePage.proptypes = {
+    defaultKeyword: PropTypes.string,
+    keywordChange: PropTypes.func,
 };
 
 export default NotePageWrapper;

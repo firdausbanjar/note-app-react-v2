@@ -1,12 +1,11 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import NotePageWrapper from "./pages/NotePage";
 import DetailNotePage from "./pages/DetailNotePage";
-import ArchivePage from "./pages/ArchivePage";
-import NoteInput from "./components/NoteInput";
 import AddNotePage from "./pages/AddNotePage";
 import PageNotFound from "./pages/PageNotFound";
+import ArchivePageWrapper from "./pages/ArchivePage";
 
 const App = () => {
     return (
@@ -18,7 +17,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<NotePageWrapper />} />
                     <Route path="/notes/new" element={<AddNotePage />} />
-                    <Route path="/archives" element={<ArchivePage />} />
+                    <Route path="/archives" element={<ArchivePageWrapper />} />
                     <Route path="/notes/:id" element={<DetailNotePage />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
