@@ -65,7 +65,7 @@ class NoteInput extends React.Component {
                         className="input-body neumorphism-pressed"
                         contentEditable
                         onInput={this.onBodyChangeEventHandler}
-                    ></div>
+                    />
                 </div>
                 <div className="input-btn">
                     <button
